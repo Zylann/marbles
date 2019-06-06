@@ -25,13 +25,13 @@ func _input(event):
 				# Capture the mouse
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-		if event.button_index == BUTTON_WHEEL_UP:
-			distance = max(distance - 1 - distance * 0.1, 0)
-			update_rotations()
-		
-		elif event.button_index == BUTTON_WHEEL_DOWN:
-			distance = max(distance + 1 + distance * 0.1, 0)
-			update_rotations()
+#		if event.button_index == BUTTON_WHEEL_UP:
+#			distance = max(distance - 1 - distance * 0.1, 0)
+#			update_rotations()
+#
+#		elif event.button_index == BUTTON_WHEEL_DOWN:
+#			distance = max(distance + 1 + distance * 0.1, 0)
+#			update_rotations()
 	
 	elif event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED || not capture_mouse:

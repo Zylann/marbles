@@ -12,7 +12,7 @@ var _overlapping_pieces = []
 var _floor_height = 0
 var _rotation_index = 0
 
-var _pieces_library = [
+var _inventory = [
 	load("res://blocks/forward_down.tscn"),
 	load("res://blocks/turn_left.tscn")
 ]
@@ -30,19 +30,21 @@ func _ready():
 
 func set_current_piece(i):
 	_current_piece_index = i
-	var piece = _pieces_library[_current_piece_index]
-	if _ghost != null:
-		_ghost.queue_free()
-	_ghost = piece.instance()
-	_machine.add_child(_ghost)
-	_ghost.set_ghost(true)
+	make_ghost()
 
 
 func place_piece():
 	_ghost.set_ghost(false)
-	
-	var piece = _pieces_library[_current_piece_index]
+	_ghost = null
+	make_ghost()
+
+
+func make_ghost():
+	var piece = _inventory[_current_piece_index]
+	if _ghost != null:
+		_ghost.queue_free()
 	_ghost = piece.instance()
+	update_ghost_rotation()
 	_machine.add_child(_ghost)
 	_ghost.set_ghost(true)
 
@@ -69,7 +71,9 @@ func _physics_process(delta):
 	for hit in hits:
 		_overlapping_pieces.append(hit.collider)
 	
-	var mpos = get_viewport().get_mouse_position()
+	# TODO https://github.com/godotengine/godot/issues/29559
+	#var mpos = get_viewport().get_mouse_position()
+	var mpos = get_viewport().size / 2.0
 	var ray_origin = _camera.project_ray_origin(mpos)
 	var ray_direction = _camera.project_ray_normal(mpos)
 	var hit = state.intersect_ray(ray_origin, ray_origin + ray_direction * 50.0, [], \
@@ -89,7 +93,8 @@ func _physics_process(delta):
 		_ghost.translation = con_pos + offset
 	
 	else:
-		_ghost.translation = ray_origin + ray_direction * 5.0
+		var pos = ray_origin + ray_direction * 10.0
+		_ghost.translation = pos
 
 
 #static func min_int(a, b):
@@ -100,32 +105,35 @@ func _physics_process(delta):
 
 
 func set_rotation_index(i):
-	_rotation_index = i
-	_ghost.rotate_y(float(_rotation_index) * PI / 2.0)
+	_rotation_index = i % 4
+	update_ghost_rotation()
+
+
+func update_ghost_rotation():
+	_ghost.rotation = Vector3(0, float(_rotation_index) * PI / 2.0, 0)
 
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
-			
-			if event.button_index == BUTTON_LEFT:
-				if len(_overlapping_pieces) == 0:
-					place_piece()
-				else:
-					print(len(_overlapping_pieces), " pieces are overlapping")
-			
-			elif event.button_index == BUTTON_RIGHT:
-				erase_piece()
+			match event.button_index:
+				BUTTON_LEFT:
+					if len(_overlapping_pieces) == 0:
+						place_piece()
+					else:
+						print(len(_overlapping_pieces), " pieces are overlapping")
+				BUTTON_RIGHT:
+					erase_piece()
+				BUTTON_WHEEL_DOWN:
+					set_current_piece(umod((_current_piece_index + 1), len(_inventory)))
+				BUTTON_WHEEL_UP:
+					set_current_piece(umod((_current_piece_index - 1), len(_inventory)))
 				
 	elif event is InputEventKey:
 		if event.pressed:
 			match event.scancode:
-				KEY_SPACE:
+				KEY_R:
 					set_rotation_index(_rotation_index + 1)
-				KEY_LEFT:
-					set_current_piece(umod((_current_piece_index + 1), len(_pieces_library)))
-				KEY_RIGHT:
-					set_current_piece(umod((_current_piece_index - 1), len(_pieces_library)))
 				KEY_M:
 					var marble = MarbleScene.instance()
 					marble.translation = _ghost.translation

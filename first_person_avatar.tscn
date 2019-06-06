@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://spectator_avatar.gd" type="Script" id=1]
+[ext_resource path="res://mouse_look.gd" type="Script" id=2]
+[ext_resource path="res://interaction.gd" type="Script" id=3]
+
+[node name="FPAvatar" type="Spatial"]
+script = ExtResource( 1 )
+speed = 8.0
+
+[node name="Camera" type="Camera" parent="."]
+script = ExtResource( 2 )
+sensitivity = 0.2
+distance = 0.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 3 )
