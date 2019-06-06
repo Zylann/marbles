@@ -11,8 +11,15 @@ var _overlapping_pieces = []
 var _floor_height = 0
 
 var _pieces_library = [
-	load("res://blocks/forward_down.tscn")
+	load("res://blocks/forward_down.tscn"),
+	load("res://blocks/turn_left.tscn")
 ]
+
+
+static func umod(x, d):
+	if x < 0:
+		return (x + 1) % d + d - 1
+	return x % d
 
 
 func _ready():
@@ -83,6 +90,13 @@ func _physics_process(delta):
 		_ghost.translation = ray_origin + ray_direction * 5.0
 
 
+#static func min_int(a, b):
+#	return a if a < b else b
+#
+#static func max_int(a, b):
+#	return a if a > b else b
+
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
@@ -100,10 +114,10 @@ func _input(event):
 			match event.scancode:
 				KEY_SPACE:
 					_ghost.rotate_y(PI / 2.0)
-				KEY_UP:
-					_floor_height += 1
-				KEY_DOWN:
-					_floor_height -= 1
+				KEY_LEFT:
+					set_current_piece(umod((_current_piece_index + 1), len(_pieces_library)))
+				KEY_RIGHT:
+					set_current_piece(umod((_current_piece_index - 1), len(_pieces_library)))
 				
 
 
