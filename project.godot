@@ -19,6 +19,11 @@ config/name="Marbles"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[layer_names]
+
+3d_physics/layer_1="Props"
+3d_physics/layer_2="ConnectAreas"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

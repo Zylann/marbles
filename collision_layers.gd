@@ -1,0 +1,2 @@
+
+const CONNECTION_AREAS = 1
