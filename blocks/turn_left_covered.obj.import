@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/turn_left_covered.obj-076bb20fdf74ee7c28d5785aa2c002e6.mesh"
+
+[deps]
+
+files=[ "res://.import/turn_left_covered.obj-076bb20fdf74ee7c28d5785aa2c002e6.mesh" ]
+
+source_file="res://blocks/turn_left_covered.obj"
+dest_files=[ "res://.import/turn_left_covered.obj-076bb20fdf74ee7c28d5785aa2c002e6.mesh", "res://.import/turn_left_covered.obj-076bb20fdf74ee7c28d5785aa2c002e6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

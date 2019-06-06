@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/turn_right2.obj-3146f3a17a4e2059b186033a87d3e7dd.mesh"
+
+[deps]
+
+files=[ "res://.import/turn_right2.obj-3146f3a17a4e2059b186033a87d3e7dd.mesh" ]
+
+source_file="res://blocks/turn_right2.obj"
+dest_files=[ "res://.import/turn_right2.obj-3146f3a17a4e2059b186033a87d3e7dd.mesh", "res://.import/turn_right2.obj-3146f3a17a4e2059b186033a87d3e7dd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

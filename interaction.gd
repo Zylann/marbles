@@ -14,7 +14,16 @@ var _rotation_index = 0
 
 var _inventory = [
 	load("res://blocks/forward_down.tscn"),
-	load("res://blocks/turn_left.tscn")
+	load("res://blocks/forward.tscn"),
+	load("res://blocks/forward_up.tscn"),
+	load("res://blocks/turn_left.tscn"),
+	load("res://blocks/turn_left_covered.tscn"),
+	load("res://blocks/turn_left_2.tscn"),
+	load("res://blocks/turn_left_3.tscn"),
+	load("res://blocks/turn_right_covered.tscn"),
+	load("res://blocks/turn_right_2.tscn"),
+	load("res://blocks/turn_right_3.tscn"),
+	load("res://blocks/looping.tscn")
 ]
 
 

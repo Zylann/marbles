@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/looping.obj-1bbdeb68042805e651fae79410a78d93.mesh"
+
+[deps]
+
+files=[ "res://.import/looping.obj-1bbdeb68042805e651fae79410a78d93.mesh" ]
+
+source_file="res://blocks/looping.obj"
+dest_files=[ "res://.import/looping.obj-1bbdeb68042805e651fae79410a78d93.mesh", "res://.import/looping.obj-1bbdeb68042805e651fae79410a78d93.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
