@@ -1,6 +1,7 @@
 extends Node
 
 const CollisionLayers = preload("res://collision_layers.gd")
+const MarbleScene = preload("res://marble.tscn")
 
 onready var _machine = get_parent().get_parent()
 onready var _camera = get_parent().get_node("Camera")
@@ -9,6 +10,7 @@ var _ghost = null
 var _current_piece_index = 0
 var _overlapping_pieces = []
 var _floor_height = 0
+var _rotation_index = 0
 
 var _pieces_library = [
 	load("res://blocks/forward_down.tscn"),
@@ -97,9 +99,15 @@ func _physics_process(delta):
 #	return a if a > b else b
 
 
+func set_rotation_index(i):
+	_rotation_index = i
+	_ghost.rotate_y(float(_rotation_index) * PI / 2.0)
+
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
+			
 			if event.button_index == BUTTON_LEFT:
 				if len(_overlapping_pieces) == 0:
 					place_piece()
@@ -108,16 +116,20 @@ func _input(event):
 			
 			elif event.button_index == BUTTON_RIGHT:
 				erase_piece()
-	
+				
 	elif event is InputEventKey:
 		if event.pressed:
 			match event.scancode:
 				KEY_SPACE:
-					_ghost.rotate_y(PI / 2.0)
+					set_rotation_index(_rotation_index + 1)
 				KEY_LEFT:
 					set_current_piece(umod((_current_piece_index + 1), len(_pieces_library)))
 				KEY_RIGHT:
 					set_current_piece(umod((_current_piece_index - 1), len(_pieces_library)))
-				
+				KEY_M:
+					var marble = MarbleScene.instance()
+					marble.translation = _ghost.translation
+					_machine.add_child(marble)
+
 
 
