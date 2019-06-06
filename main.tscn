@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://spectator_avatar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://axes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://double_esc_exit.gd" type="Script" id=4]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="SpectatorAvatar" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54483, 5.05095 )
+
+[node name="Axes" parent="." instance=ExtResource( 3 )]
+
+[node name="DoubleEscExit" type="Node" parent="."]
+script = ExtResource( 4 )
