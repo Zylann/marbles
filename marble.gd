@@ -1,6 +1,6 @@
 extends RigidBody
 
-const AVG_AMOUNT = 5
+const AVG_AMOUNT = 32
 
 var _ground_normal = Vector3.UP
 var _avg_ground_normal = Vector3.UP
@@ -28,7 +28,7 @@ func _integrate_forces(state):
 		hit_pos /= float(state.get_contact_count())
 		var diff = state.transform.origin - hit_pos
 		if diff != Vector3():
-			_ground_normal = diff.normalize()
+			_ground_normal = diff.normalized()
 	else:
 		_ground_normal = Vector3.UP
 
