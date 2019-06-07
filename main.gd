@@ -2,6 +2,7 @@ extends Node
 
 const EditAvatarScene = preload("res://first_person_avatar.tscn")
 const MarbleAvatarScene = preload("res://marble_camera.tscn")
+const MarbleScene = preload("res://marble.tscn")
 
 const MODE_EDIT = 0
 const MODE_MARBLE = 1
@@ -45,6 +46,27 @@ func _input(event):
 					save_machine()
 				KEY_L:
 					load_machine()
+
+
+func try_place_start_marble():
+	var piece = get_highest_piece()
+	if piece == null:
+		return false
+	var marble = MarbleScene.instance()
+	marble.translation = piece.translation + Vector3.UP * 5.0
+	add_child(marble)
+	return true
+
+
+func get_highest_piece():
+	var pieces = get_tree().get_nodes_in_group("pieces")
+	if len(pieces) == 0:
+		return  null
+	var highest_piece = pieces[0]
+	for piece in pieces:
+		if piece.translation.y > highest_piece.translation.y:
+			highest_piece = piece
+	return highest_piece
 
 
 func set_mode(mode):
