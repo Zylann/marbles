@@ -27,6 +27,7 @@ DDD="*res://ddd.gd"
 
 3d_physics/layer_1="Props"
 3d_physics/layer_2="ConnectAreas"
+3d_physics/layer_3="Marbles"
 
 [physics]
 

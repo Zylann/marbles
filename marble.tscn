@@ -14,6 +14,7 @@ roughness = 0.29
 radius = 0.3
 
 [node name="Marble" type="RigidBody"]
+collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
