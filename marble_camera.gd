@@ -1,6 +1,6 @@
 extends Spatial
 
-const AVG_AMOUNT = 5
+const AVG_AMOUNT = 16
 
 onready var _camera = get_node("Camera")
 
@@ -11,7 +11,7 @@ var _prev_up = Vector3(0, 1, 0)
 
 func set_target(t):
 	_target = t
-	_target.hide()
+	#_target.hide()
 	if _target != null:
 		translation = _target.translation
 	set_physics_process(_target != null)
