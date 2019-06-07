@@ -153,6 +153,9 @@ func _input(event):
 					set_current_piece(umod((_current_piece_index + 1), len(PieceList.pieces)))
 				BUTTON_WHEEL_UP:
 					set_current_piece(umod((_current_piece_index - 1), len(PieceList.pieces)))
+				BUTTON_MIDDLE:
+					if _pointed_piece != null:
+						set_current_piece(_pointed_piece.get_piece_index(PieceList.pieces))
 				
 	elif event is InputEventKey:
 		if event.pressed:

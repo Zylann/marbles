@@ -14,6 +14,14 @@ func _ready():
 	_end_area = get_node("EndArea")
 
 
+func get_piece_index(piece_list):
+	for i in len(piece_list):
+		var piece = piece_list[i]
+		if piece.resource_path == filename:
+			return i
+	return -1
+
+
 func set_ghost(is_ghost):
 	var mat
 	
