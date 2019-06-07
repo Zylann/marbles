@@ -22,12 +22,16 @@ func set_ghost(is_ghost):
 		collision_layer = 0
 		_begin_area.collision_layer = 0
 		_end_area.collision_layer = 0
+		if is_in_group("pieces"):
+			remove_from_group("pieces")
 	
 	else:
 		mat = DefaultPieceMaterial
 		collision_layer = 1 << CollisionLayers.PROPS
 		_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
 		_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
+		if not is_in_group("pieces"):
+			add_to_group("pieces")
 	
 	for i in get_child_count():
 		var child = get_child(i)

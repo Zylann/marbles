@@ -27,13 +27,19 @@ func _exit_tree():
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
-			if event.scancode == KEY_TAB:
-				if _mode == MODE_EDIT:
-					set_mode(MODE_MARBLE)
-				else:
-					set_mode(MODE_EDIT)
-			elif event.scancode == KEY_ESCAPE:
-				set_mode(MODE_EDIT)
+			match event.scancode:
+				KEY_TAB:
+					if _mode == MODE_EDIT:
+						set_mode(MODE_MARBLE)
+					else:
+						set_mode(MODE_EDIT)
+				KEY_ESCAPE:
+					if _mode == MODE_MARBLE:
+						set_mode(MODE_EDIT)
+				KEY_K:
+					save_machine()
+				KEY_L:
+					load_machine()
 
 
 func set_mode(mode):
@@ -69,3 +75,61 @@ func _process(delta):
 		if _mode == MODE_MARBLE:
 			set_mode(MODE_EDIT)
 
+
+func save_machine():
+	var pieces = get_tree().get_nodes_in_group("pieces")
+	var pieces_data = []
+	for piece in pieces:
+		var pos = piece.translation
+		var rot = piece.rotation
+		var piece_data = {
+			"type": piece.filename,
+			"position": [pos.x, pos.y, pos.z],
+			"rotation": [rot.x, rot.y, rot.z]
+		}
+		pieces_data.push_back(piece_data)
+	var data = {
+		"pieces": pieces_data
+	}
+	var json = JSON.print(data, "\t", true)
+	var f = File.new()
+	var fpath = "save.marble"
+	var err = f.open(fpath, File.WRITE)
+	if err != OK:
+		print("Could not save file ", fpath, ", error ", err)
+		return
+	f.store_string(json)
+	f.close()
+
+
+static func array_to_vec3(a):
+	return Vector3(a[0], a[1], a[2])
+
+
+func load_machine():
+	var f = File.new()
+	var fpath = "save.marble"
+	var err = f.open(fpath, File.READ)
+	if err != OK:
+		print("Could not open file ", fpath, ", error ", err)
+		return
+	var json = f.get_as_text()
+	var json_res = JSON.parse(json)
+	if json_res.error != OK:
+		print("Error when loading json ", fpath, ": ", json_res.error_string)
+		return
+	var data = json_res.result
+	
+	var pieces = get_tree().get_nodes_in_group("pieces")
+	for piece in pieces:
+		piece.queue_free()
+	
+	for piece_data in data.pieces:
+		var piece_scene = load(piece_data.type)
+		var piece = piece_scene.instance()
+		var pos = array_to_vec3(piece_data.position)
+		var rot = array_to_vec3(piece_data.rotation)
+		piece.translation = pos
+		piece.rotation = rot
+		add_child(piece)
+		piece.set_ghost(false)

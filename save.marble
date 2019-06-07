@@ -1,0 +1,212 @@
+{
+	"pieces": [
+		{
+			"position": [
+				-5.88789,
+				3.708661,
+				-1.471792
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				2.708661,
+				2.528208
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				1.708661,
+				6.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				0.708661,
+				10.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				-0.291339,
+				14.528209
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				-1.88789,
+				-1.291339,
+				16.52821
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/turn_left_covered.tscn"
+		},
+		{
+			"position": [
+				-0.88789,
+				-2.291339,
+				13.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/turn_left_covered.tscn"
+		},
+		{
+			"position": [
+				-3.88789,
+				-3.291339,
+				12.52821
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/turn_left_2.tscn"
+		},
+		{
+			"position": [
+				-5.88789,
+				-4.291339,
+				16.52821
+			],
+			"rotation": [
+				0,
+				0,
+				0
+			],
+			"type": "res://blocks/turn_left_3.tscn"
+		},
+		{
+			"position": [
+				-0.88789,
+				-5.291339,
+				19.52821
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/turn_left_3.tscn"
+		},
+		{
+			"position": [
+				2.11211,
+				-6.291339,
+				14.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				2.11211,
+				-7.291339,
+				10.52821
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
+		},
+		{
+			"position": [
+				-0.630251,
+				-10.162052,
+				4.810374
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/hopper2.tscn"
+		},
+		{
+			"position": [
+				-0.575066,
+				-16.052359,
+				5.25242
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_up.tscn"
+		},
+		{
+			"position": [
+				-0.575066,
+				-17.052359,
+				9.25242
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_up.tscn"
+		},
+		{
+			"position": [
+				-0.575066,
+				-18.052359,
+				13.25242
+			],
+			"rotation": [
+				0,
+				3.141593,
+				0
+			],
+			"type": "res://blocks/forward_up.tscn"
+		}
+	]
+}
