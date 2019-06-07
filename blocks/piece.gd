@@ -25,7 +25,7 @@ func set_ghost(is_ghost):
 	
 	else:
 		mat = DefaultPieceMaterial
-		collision_layer = CollisionLayers.PROPS
+		collision_layer = 1 << CollisionLayers.PROPS
 		_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
 		_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
 	
