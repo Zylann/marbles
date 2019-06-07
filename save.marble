@@ -220,6 +220,84 @@
 				0
 			],
 			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				8.163136,
+				3.933541,
+				5.604908
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/bumper.tscn"
+		},
+		{
+			"position": [
+				16.399506,
+				4.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				4.712389,
+				0
+			],
+			"type": "res://blocks/hopper3.tscn"
+		},
+		{
+			"position": [
+				16.399506,
+				2.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/tube_vertical_to_horizontal.tscn"
+		},
+		{
+			"position": [
+				19.399506,
+				1.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				23.399506,
+				1.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				27.399506,
+				1.630377,
+				5.647232
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/forward_down.tscn"
 		}
 	]
 }
