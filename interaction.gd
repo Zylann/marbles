@@ -2,6 +2,7 @@ extends Node
 
 const CollisionLayers = preload("res://collision_layers.gd")
 const MarbleScene = preload("res://marble.tscn")
+var PieceList = load("res://piece_list.gd")
 
 onready var _machine = get_parent().get_parent()
 onready var _camera = get_parent().get_node("Camera")
@@ -11,21 +12,6 @@ var _current_piece_index = 0
 var _overlapping_pieces = []
 var _floor_height = 0
 var _rotation_index = 0
-
-var _inventory = [
-	load("res://blocks/forward_down.tscn"),
-	load("res://blocks/forward.tscn"),
-	load("res://blocks/forward_up.tscn"),
-	load("res://blocks/turn_left_covered.tscn"),
-	load("res://blocks/turn_left_2.tscn"),
-	load("res://blocks/turn_left_3.tscn"),
-	load("res://blocks/turn_right_covered.tscn"),
-	load("res://blocks/turn_right_2.tscn"),
-	load("res://blocks/turn_right_3.tscn"),
-	load("res://blocks/looping.tscn"),
-	load("res://blocks/hopper.tscn"),
-	load("res://blocks/hopper2.tscn")
-]
 
 
 static func umod(x, d):
@@ -56,7 +42,7 @@ func place_piece():
 
 
 func make_ghost():
-	var piece = _inventory[_current_piece_index]
+	var piece = PieceList.pieces[_current_piece_index]
 	if _ghost != null:
 		_ghost.queue_free()
 	_ghost = piece.instance()
@@ -142,9 +128,9 @@ func _input(event):
 				BUTTON_RIGHT:
 					erase_piece()
 				BUTTON_WHEEL_DOWN:
-					set_current_piece(umod((_current_piece_index + 1), len(_inventory)))
+					set_current_piece(umod((_current_piece_index + 1), len(PieceList.pieces)))
 				BUTTON_WHEEL_UP:
-					set_current_piece(umod((_current_piece_index - 1), len(_inventory)))
+					set_current_piece(umod((_current_piece_index - 1), len(PieceList.pieces)))
 				
 	elif event is InputEventKey:
 		if event.pressed:
