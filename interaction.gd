@@ -105,7 +105,10 @@ func update_pointed_piece(state, ray_origin, ray_direction):
 	if piece_hit.empty():
 		_pointed_piece = null
 	else:
-		_pointed_piece = piece_hit.collider
+		if piece_hit.collider.is_in_group("pieces"):
+			_pointed_piece = piece_hit.collider
+		else:
+			_pointed_piece = null
 
 
 func update_overlapping_pieces(state):
