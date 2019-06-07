@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tube_vertical_to_horizontal.obj-95aae756ac5759df482afc3f1d87c4a2.mesh"
+
+[deps]
+
+files=[ "res://.import/tube_vertical_to_horizontal.obj-95aae756ac5759df482afc3f1d87c4a2.mesh" ]
+
+source_file="res://blocks/tube_vertical_to_horizontal.obj"
+dest_files=[ "res://.import/tube_vertical_to_horizontal.obj-95aae756ac5759df482afc3f1d87c4a2.mesh", "res://.import/tube_vertical_to_horizontal.obj-95aae756ac5759df482afc3f1d87c4a2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
