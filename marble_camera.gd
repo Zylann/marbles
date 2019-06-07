@@ -1,5 +1,7 @@
 extends Spatial
 
+const AVG_AMOUNT = 5
+
 onready var _camera = get_node("Camera")
 
 var _target = null
@@ -33,6 +35,6 @@ func _physics_process(delta):
 	
 	translation = _prev_pos
 	look_at(pos, _target.get_avg_ground_normal())
-	var avg = 4.0
+	var avg = float(AVG_AMOUNT)
 	_prev_pos = (_prev_pos * (avg - 1.0) + pos) / avg
 

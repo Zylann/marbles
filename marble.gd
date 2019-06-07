@@ -1,6 +1,6 @@
 extends RigidBody
 
-const AVG_AMOUNT = 4
+const AVG_AMOUNT = 5
 
 var _ground_normal = Vector3.UP
 var _avg_ground_normal = Vector3.UP
