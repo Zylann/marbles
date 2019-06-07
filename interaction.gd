@@ -166,6 +166,16 @@ func _input(event):
 					var marble = MarbleScene.instance()
 					marble.translation = _ghost.translation
 					_machine.add_child(marble)
+				KEY_PAGEUP:
+					nudge_all_pieces(Vector3(0, 1, 0))
+				KEY_PAGEDOWN:
+					nudge_all_pieces(Vector3(0, -1, 0))
+
+
+func nudge_all_pieces(offset):
+	var pieces = get_tree().get_nodes_in_group("pieces")
+	for piece in pieces:
+		piece.translation += offset
 
 
 
