@@ -16,7 +16,6 @@ var _inventory = [
 	load("res://blocks/forward_down.tscn"),
 	load("res://blocks/forward.tscn"),
 	load("res://blocks/forward_up.tscn"),
-	load("res://blocks/turn_left.tscn"),
 	load("res://blocks/turn_left_covered.tscn"),
 	load("res://blocks/turn_left_2.tscn"),
 	load("res://blocks/turn_left_3.tscn"),
