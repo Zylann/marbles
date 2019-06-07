@@ -6,6 +6,8 @@ const MarbleAvatarScene = preload("res://marble_camera.tscn")
 const MODE_EDIT = 0
 const MODE_MARBLE = 1
 
+onready var _player_spawn = get_node("PlayerSpawn")
+
 var _edit_avatar = null
 var _marble_avatar = null
 var _mode = MODE_EDIT
@@ -14,6 +16,9 @@ var _mode = MODE_EDIT
 func _ready():
 	_edit_avatar = EditAvatarScene.instance()
 	_marble_avatar = MarbleAvatarScene.instance()
+	
+	_edit_avatar.translation = _player_spawn.translation
+	
 	set_mode(MODE_EDIT)
 
 
