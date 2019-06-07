@@ -13,6 +13,8 @@ onready var _place_sound = get_node("Place")
 onready var _pick_sound = get_node("Pick")
 onready var _no_sound = get_node("No")
 onready var _remove_sound = get_node("Remove")
+onready var _nudge_up_sound = get_node("NudgeUp")
+onready var _nudge_down_sound = get_node("NudgeDown")
 
 var _ghost = null
 var _current_piece_index = 0
@@ -185,8 +187,10 @@ func _unhandled_input(event):
 					_machine.add_child(marble)
 				KEY_PAGEUP:
 					nudge_all_pieces(Vector3(0, 1, 0))
+					_nudge_up_sound.play()
 				KEY_PAGEDOWN:
 					nudge_all_pieces(Vector3(0, -1, 0))
+					_nudge_down_sound.play()
 
 
 func nudge_all_pieces(offset):

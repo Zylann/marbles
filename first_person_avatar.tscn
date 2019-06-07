@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://spectator_avatar.gd" type="Script" id=1]
 [ext_resource path="res://mouse_look.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://sounds/place.wav" type="AudioStream" id=8]
 [ext_resource path="res://sounds/remove.wav" type="AudioStream" id=9]
 [ext_resource path="res://sounds/pick.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/nudge_up.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/nudge_down.wav" type="AudioStream" id=12]
 
 [node name="FPAvatar" type="Spatial"]
 script = ExtResource( 1 )
@@ -43,3 +45,9 @@ stream = ExtResource( 9 )
 
 [node name="Pick" type="AudioStreamPlayer" parent="Interaction"]
 stream = ExtResource( 10 )
+
+[node name="NudgeUp" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 11 )
+
+[node name="NudgeDown" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 12 )

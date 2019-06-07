@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nudge_down.wav-192b8a1649d04db1f5a34ca3beb8c247.sample"
+
+[deps]
+
+source_file="res://sounds/nudge_down.wav"
+dest_files=[ "res://.import/nudge_down.wav-192b8a1649d04db1f5a34ca3beb8c247.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
