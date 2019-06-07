@@ -60,19 +60,39 @@ shape = SubResource( 2 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
-[node name="Controls" type="Label" parent="."]
-margin_left = 10.7142
-margin_top = 8.19325
-margin_right = 324.714
-margin_bottom = 321.193
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -74.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.372549 )
+
+[node name="Controls" type="Label" parent="ColorRect"]
+margin_left = 7.0
+margin_top = 4.0
+margin_right = 214.0
+margin_bottom = 69.0
 text = "[WASD]: Move
 [Shift]: Go down
 [Space]: Go up
-[MouseWheel]: select piece
-[R]: Rotate piece
+[MouseWheel]: select piece"
+
+[node name="Controls2" type="Label" parent="ColorRect"]
+margin_left = 219.0
+margin_top = 4.0
+margin_right = 426.0
+margin_bottom = 69.0
+text = "[R]: Rotate piece
 [LMB]: place piece
 [RMB]: remove piece
-[Tab]: Marble camera
-[M]: Spawn marble
+[Tab]: Marble camera"
+
+[node name="Controls3" type="Label" parent="ColorRect"]
+margin_left = 435.0
+margin_top = 4.0
+margin_right = 957.0
+margin_bottom = 64.0
+text = "[M]: Spawn marble
 [K]: Save
 [L]: Load"
