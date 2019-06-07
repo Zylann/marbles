@@ -9,11 +9,9 @@ export var distance = 5.0
 
 var _yaw = 0
 var _pitch = 0
-var _offset = Vector3()
 
 
 func _ready():
-	_offset = get_translation()
 	if capture_mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -68,6 +66,6 @@ func update_rotations():
 	set_translation(Vector3())
 	set_rotation(Vector3(0, deg2rad(_yaw), 0))
 	rotate(get_transform().basis.x.normalized(), -deg2rad(_pitch))
-	set_translation(get_transform().basis.z * distance + _offset)
+	set_translation(get_transform().basis.z * distance)
 
 

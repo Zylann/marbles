@@ -33,8 +33,14 @@ static func umod(x, d):
 	return x % d
 
 
-func _ready():
+func _enter_tree():
 	call_deferred("set_current_piece", 0)
+
+
+func _exit_tree():
+	if _ghost != null:
+		_ghost.queue_free()
+		_ghost = null
 
 
 func set_current_piece(i):
@@ -64,6 +70,7 @@ func erase_piece():
 
 
 func _physics_process(delta):
+	assert(is_inside_tree())
 	if _ghost == null:
 		return
 	

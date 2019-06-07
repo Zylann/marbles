@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://axes.tscn" type="PackedScene" id=2]
 [ext_resource path="res://double_esc_exit.gd" type="Script" id=3]
-[ext_resource path="res://first_person_avatar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://crosshair.png" type="Texture" id=5]
+[ext_resource path="res://crosshair.png" type="Texture" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -20,9 +19,6 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.579685, 0.814841, 0, -0.814841, 0.579685, 5.23546, 1.26289, 0 )
 shadow_enabled = true
 
-[node name="FPAvatar" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34155, 5.4842 )
-
 [node name="CrosshairContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,4 +29,4 @@ margin_left = 496.0
 margin_top = 284.0
 margin_right = 528.0
 margin_bottom = 316.0
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )

@@ -13,5 +13,5 @@ script = ExtResource( 2 )
 sensitivity = 0.2
 distance = 0.0
 
-[node name="Node" type="Node" parent="."]
+[node name="Interaction" type="Node" parent="."]
 script = ExtResource( 3 )

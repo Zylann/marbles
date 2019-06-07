@@ -28,6 +28,10 @@ DDD="*res://ddd.gd"
 3d_physics/layer_1="Props"
 3d_physics/layer_2="ConnectAreas"
 
+[physics]
+
+common/enable_object_picking=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
