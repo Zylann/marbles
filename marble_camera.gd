@@ -13,7 +13,7 @@ func set_target(t):
 	_target = t
 	#_target.hide()
 	if _target != null:
-		translation = _target.translation
+		translation = _target.translation + Vector3(0.1, 1, 0.1)
 	set_physics_process(_target != null)
 
 
@@ -22,7 +22,23 @@ func _physics_process(delta):
 		print("No target")
 		set_physics_process(false)
 		return
-	
+	#process_avg(delta)
+	process_ccd(delta)
+
+
+func process_ccd(delta):
+	var distance = 4.0
+	var target_pos = _target.translation
+	var normal = Vector3.UP#_target.get_avg_ground_normal()
+	var v_offset = Vector3(0, 2, 0)
+	look_at(target_pos, normal)
+	var forward = -transform.basis.z
+	var d = target_pos.distance_to(translation)
+	if d > distance:
+		translation = target_pos - forward * distance
+
+
+func process_avg(delta):
 	var pos = _target.translation
 	var diff = pos - _prev_pos
 	
