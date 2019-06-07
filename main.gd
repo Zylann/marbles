@@ -36,7 +36,10 @@ func _unhandled_input(event):
 			match event.scancode:
 				KEY_TAB:
 					if _mode == MODE_EDIT:
-						set_mode(MODE_MARBLE)
+						if try_place_start_marble():
+							set_mode(MODE_MARBLE)
+						else:
+							print("Could not place start marble")
 					else:
 						set_mode(MODE_EDIT)
 				KEY_ESCAPE:
