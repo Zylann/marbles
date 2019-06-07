@@ -2,8 +2,13 @@ extends AudioStreamPlayer3D
 
 const AVG_AMOUNT = 10
 
+onready var _hit_sound = get_node("HitSound")
+
 var _prev_pos = null
 var _speed = 0.0
+var _last_hit_time = 0.0
+var _last_body_enter_time = 0.0
+var _last_body_exit_time = 0.0
 
 
 func _ready():
@@ -27,3 +32,17 @@ func _physics_process(delta):
 	var linear_vol = clamp(_speed * 0.5 - 2.0, 0.0, 1.0)
 	unit_db = linear2db(linear_vol)
 	#DDD.set_text("linear", linear_vol)
+
+
+func _on_Marble_body_entered(body):
+	var now = OS.get_ticks_msec()
+	_last_body_enter_time = now
+	if now - _last_body_exit_time > 500.0:
+		if now - _last_hit_time > 500.0:
+			_hit_sound.play()
+			_last_hit_time = now
+
+
+func _on_Marble_body_exited(body):
+	var now = OS.get_ticks_msec()
+	_last_body_exit_time = now
