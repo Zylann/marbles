@@ -141,7 +141,7 @@ func update_ghost_rotation():
 	_ghost.rotation = Vector3(0, float(_rotation_index) * PI / 2.0, 0)
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			match event.button_index:
