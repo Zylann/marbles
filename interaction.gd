@@ -12,6 +12,7 @@ var _current_piece_index = 0
 var _overlapping_pieces = []
 var _floor_height = 0
 var _rotation_index = 0
+var _pointed_piece = null
 
 
 static func umod(x, d):
@@ -52,8 +53,9 @@ func make_ghost():
 
 
 func erase_piece():
-	for piece in _overlapping_pieces:
-		piece.queue_free()
+	if _pointed_piece != null:
+		_pointed_piece.queue_free()
+		_pointed_piece = null
 
 
 func _physics_process(delta):
@@ -62,29 +64,26 @@ func _physics_process(delta):
 		return
 	
 	var state = get_viewport().world.direct_space_state
-	var q = PhysicsShapeQueryParameters.new()
-	var shape = BoxShape.new()
-	shape.extents = Vector3(1,1,1) * 0.4
-	q.set_shape(shape)
-	q.transform = Transform(Basis(), _ghost.translation)
-	q.collide_with_areas = false
-	var hits = state.intersect_shape(q)
 	
-	_overlapping_pieces.clear()
-	for hit in hits:
-		_overlapping_pieces.append(hit.collider)
+	update_overlapping_pieces(state)
 	
 	# TODO https://github.com/godotengine/godot/issues/29559
 	#var mpos = get_viewport().get_mouse_position()
 	var mpos = get_viewport().size / 2.0
 	var ray_origin = _camera.project_ray_origin(mpos)
 	var ray_direction = _camera.project_ray_normal(mpos)
-	var hit = state.intersect_ray(ray_origin, ray_origin + ray_direction * 50.0, [], \
+	
+	update_ghost_position(state, ray_origin, ray_direction)
+	update_pointed_piece(state, ray_origin, ray_direction)
+
+
+func update_ghost_position(state, ray_origin, ray_direction):
+	var con_hit = state.intersect_ray(ray_origin, ray_origin + ray_direction * 50.0, [], \
 		1 << CollisionLayers.CONNECTION_AREAS, false, true)
 	
-	if not hit.empty():
-		var con_pos = hit.collider.global_transform.origin
-		var is_begin = hit.collider.name.find("Begin") != -1
+	if not con_hit.empty():
+		var con_pos = con_hit.collider.global_transform.origin
+		var is_begin = con_hit.collider.name.find("Begin") != -1
 		var offset = Vector3()
 		var con
 		if is_begin:
@@ -97,7 +96,30 @@ func _physics_process(delta):
 	
 	else:
 		var pos = ray_origin + ray_direction * 10.0
-		_ghost.translation = pos
+		_ghost.translation = pos	
+
+
+func update_pointed_piece(state, ray_origin, ray_direction):
+	var piece_hit = state.intersect_ray(ray_origin, ray_origin + ray_direction * 50.0, [], \
+		1 << CollisionLayers.PROPS, true, false)
+	if piece_hit.empty():
+		_pointed_piece = null
+	else:
+		_pointed_piece = piece_hit.collider
+
+
+func update_overlapping_pieces(state):
+	var q = PhysicsShapeQueryParameters.new()
+	var shape = BoxShape.new()
+	shape.extents = Vector3(1,1,1) * 0.4
+	q.set_shape(shape)
+	q.transform = Transform(Basis(), _ghost.translation)
+	q.collide_with_areas = false
+	var hits = state.intersect_shape(q)
+	
+	_overlapping_pieces.clear()
+	for hit in hits:
+		_overlapping_pieces.append(hit.collider)
 
 
 #static func min_int(a, b):
