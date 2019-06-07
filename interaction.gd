@@ -22,7 +22,9 @@ var _inventory = [
 	load("res://blocks/turn_right_covered.tscn"),
 	load("res://blocks/turn_right_2.tscn"),
 	load("res://blocks/turn_right_3.tscn"),
-	load("res://blocks/looping.tscn")
+	load("res://blocks/looping.tscn"),
+	load("res://blocks/hopper.tscn"),
+	load("res://blocks/hopper2.tscn")
 ]
 
 

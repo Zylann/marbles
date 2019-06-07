@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/hopper2.obj-73513dc15cb06c4fbe0552302481a155.mesh"
+
+[deps]
+
+files=[ "res://.import/hopper2.obj-73513dc15cb06c4fbe0552302481a155.mesh" ]
+
+source_file="res://blocks/hopper2.obj"
+dest_files=[ "res://.import/hopper2.obj-73513dc15cb06c4fbe0552302481a155.mesh", "res://.import/hopper2.obj-73513dc15cb06c4fbe0552302481a155.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
