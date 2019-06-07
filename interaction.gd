@@ -6,6 +6,13 @@ var PieceList = load("res://piece_list.gd")
 
 onready var _machine = get_parent().get_parent()
 onready var _camera = get_parent().get_node("Camera")
+onready var _select_sound = get_node("Select")
+onready var _select_sound2 = get_node("Select2")
+onready var _rotate_sound = get_node("Rotate")
+onready var _place_sound = get_node("Place")
+onready var _pick_sound = get_node("Pick")
+onready var _no_sound = get_node("No")
+onready var _remove_sound = get_node("Remove")
 
 var _ghost = null
 var _current_piece_index = 0
@@ -40,6 +47,7 @@ func place_piece():
 	_ghost.set_ghost(false)
 	_ghost = null
 	make_ghost()
+	_place_sound.play()
 
 
 func make_ghost():
@@ -150,21 +158,27 @@ func _unhandled_input(event):
 						place_piece()
 					else:
 						print(len(_overlapping_pieces), " pieces are overlapping")
+						_no_sound.play()
 				BUTTON_RIGHT:
 					erase_piece()
+					_remove_sound.play()
 				BUTTON_WHEEL_DOWN:
 					set_current_piece(umod((_current_piece_index + 1), len(PieceList.pieces)))
+					_select_sound.play()
 				BUTTON_WHEEL_UP:
 					set_current_piece(umod((_current_piece_index - 1), len(PieceList.pieces)))
+					_select_sound2.play()
 				BUTTON_MIDDLE:
 					if _pointed_piece != null:
 						set_current_piece(_pointed_piece.get_piece_index(PieceList.pieces))
+						_pick_sound.play()
 				
 	elif event is InputEventKey:
 		if event.pressed:
 			match event.scancode:
 				KEY_R:
 					set_rotation_index(_rotation_index + 1)
+					_rotate_sound.play()
 				KEY_M:
 					var marble = MarbleScene.instance()
 					marble.translation = _ghost.translation

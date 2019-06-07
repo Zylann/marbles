@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://spectator_avatar.gd" type="Script" id=1]
 [ext_resource path="res://mouse_look.gd" type="Script" id=2]
 [ext_resource path="res://interaction.gd" type="Script" id=3]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/select2.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/rotate.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/no.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/place.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/remove.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/pick.wav" type="AudioStream" id=10]
 
 [node name="FPAvatar" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,3 +22,24 @@ distance = 0.0
 
 [node name="Interaction" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="Select" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 4 )
+
+[node name="Select2" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 5 )
+
+[node name="Rotate" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 6 )
+
+[node name="No" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 7 )
+
+[node name="Place" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 8 )
+
+[node name="Remove" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 9 )
+
+[node name="Pick" type="AudioStreamPlayer" parent="Interaction"]
+stream = ExtResource( 10 )
