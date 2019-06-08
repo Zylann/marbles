@@ -47,7 +47,10 @@ func _unhandled_input(event):
 					if _mode == MODE_MARBLE:
 						set_mode(MODE_EDIT)
 					else:
-						_pause_menu.show()
+						if _pause_menu.visible:
+							_pause_menu.close()
+						else:
+							_pause_menu.show()
 #				KEY_K:
 #					save_machine()
 #				KEY_L:
