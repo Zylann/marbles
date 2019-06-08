@@ -37,10 +37,13 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			match event.scancode:
+				KEY_M:
+					try_place_start_marble()
 				KEY_TAB:
 					if _mode == MODE_EDIT:
-						if try_place_start_marble():
-							set_mode(MODE_MARBLE)
+						var marble = try_place_start_marble()
+						if marble != null:
+							set_mode(MODE_MARBLE, marble)
 						else:
 							print("Could not place start marble")
 					else:
@@ -62,11 +65,11 @@ func _unhandled_input(event):
 func try_place_start_marble():
 	var piece = get_highest_piece()
 	if piece == null:
-		return false
+		return null
 	var marble = MarbleScene.instance()
 	marble.translation = piece.translation + Vector3.UP * 5.0
 	add_child(marble)
-	return true
+	return marble
 
 
 func get_highest_piece():
@@ -80,7 +83,7 @@ func get_highest_piece():
 	return highest_piece
 
 
-func set_mode(mode):
+func set_mode(mode, target_marble=null):
 	_mode = mode
 	
 	if _mode == MODE_MARBLE:
@@ -93,7 +96,7 @@ func set_mode(mode):
 			remove_from_tree(_edit_avatar)
 		if not _marble_avatar.is_inside_tree():
 			add_child(_marble_avatar)
-		_marble_avatar.set_target(marbles[0])
+		_marble_avatar.set_target(target_marble)
 		
 	else:
 		print("Switch to edit mode")

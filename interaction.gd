@@ -181,10 +181,10 @@ func _unhandled_input(event):
 				KEY_R:
 					set_rotation_index(_rotation_index + 1)
 					_rotate_sound.play()
-				KEY_M:
-					var marble = MarbleScene.instance()
-					marble.translation = _ghost.translation
-					_machine.add_child(marble)
+#				KEY_M:
+#					var marble = MarbleScene.instance()
+#					marble.translation = _ghost.translation
+#					_machine.add_child(marble)
 				KEY_PAGEUP:
 					nudge_all_pieces(Vector3(0, 1, 0))
 					_nudge_up_sound.play()
