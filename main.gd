@@ -9,6 +9,8 @@ const MODE_MARBLE = 1
 
 onready var _player_spawn = get_node("PlayerSpawn")
 onready var _pause_menu = get_node("Menu")
+onready var _load_sound = get_node("LoadSound")
+onready var _save_sound = get_node("SaveSound")
 
 var _edit_avatar = null
 var _marble_avatar = null
@@ -171,7 +173,9 @@ func load_machine(fpath):
 
 func _on_Menu_load_path_selected(fpath):
 	load_machine(fpath)
+	_load_sound.play()
 
 
 func _on_Menu_save_path_selected(fpath):
 	save_machine(fpath)
+	_save_sound.play()
