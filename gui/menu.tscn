@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gui/menu.gd" type="Script" id=1]
 [ext_resource path="res://gui/title.png" type="Texture" id=2]
+[ext_resource path="res://sounds/ui_open.wav" type="AudioStream" id=3]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.505882 )
 
 [node name="Panel" type="ColorRect" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -73,6 +75,9 @@ margin_right = 368.0
 margin_bottom = 206.0
 rect_min_size = Vector2( 0, 32 )
 text = "Quit"
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]

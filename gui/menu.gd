@@ -3,6 +3,8 @@ extends Control
 signal save_path_selected(fpath)
 signal load_path_selected(fpath)
 
+onready var _open_sound = get_node("OpenSound")
+
 var _file_dialog = null
 
 
@@ -48,8 +50,9 @@ func _on_FileDialog_file_selected(fpath):
 	close()
 
 
-#func _notification(what):
-#	match what:
-#		NOTIFICATION_VISIBILITY_CHANGED:
-#			if visible:
-#				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func _notification(what):
+	match what:
+		NOTIFICATION_VISIBILITY_CHANGED:
+			if visible:
+				_open_sound.play()
+				#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
