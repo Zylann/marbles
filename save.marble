@@ -493,6 +493,19 @@
 				0
 			],
 			"type": "res://blocks/forward.tscn"
+		},
+		{
+			"position": [
+				-20.600494,
+				5.630377,
+				-4.352767
+			],
+			"rotation": [
+				0,
+				1.570796,
+				0
+			],
+			"type": "res://blocks/finish_line.tscn"
 		}
 	]
 }

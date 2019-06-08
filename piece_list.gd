@@ -14,5 +14,6 @@ const pieces = [
 	preload("res://blocks/hopper2.tscn"),
 	preload("res://blocks/hopper3.tscn"),
 	preload("res://blocks/tube_vertical_to_horizontal.tscn"),
-	preload("res://blocks/bumper.tscn")
+	preload("res://blocks/bumper.tscn"),
+	preload("res://blocks/finish_line.tscn")
 ]

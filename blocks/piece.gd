@@ -5,6 +5,8 @@ const CollisionLayers = preload("res://collision_layers.gd")
 const DefaultPieceMaterial = preload("res://blocks/default_piece_material.tres")
 const DefaultGhostMaterial = preload("res://blocks/default_ghost_material.tres")
 
+export(bool) var empty_material_override = false
+
 var _begin_area = null
 var _end_area = null
 
@@ -34,7 +36,10 @@ func set_ghost(is_ghost):
 			remove_from_group("pieces")
 	
 	else:
-		mat = DefaultPieceMaterial
+		if empty_material_override:
+			mat = null
+		else:
+			mat = DefaultPieceMaterial
 		collision_layer = 1 << CollisionLayers.PROPS
 		_begin_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
 		_end_area.collision_layer = 1 << CollisionLayers.CONNECTION_AREAS
