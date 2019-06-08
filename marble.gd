@@ -22,7 +22,7 @@ func get_avg_position():
 
 
 func _process(delta):
-	if translation.y < -100:
+	if translation.y < -10:
 		print("Marble is too low, freeing")
 		queue_free()
 
