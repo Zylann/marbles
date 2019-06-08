@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://axes.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://gui/menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sounds/load.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/save.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/nerdy_granny_master1.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -110,5 +111,11 @@ stream = ExtResource( 7 )
 
 [node name="SaveSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
 [connection signal="load_path_selected" from="Menu" to="." method="_on_Menu_load_path_selected"]
 [connection signal="save_path_selected" from="Menu" to="." method="_on_Menu_save_path_selected"]

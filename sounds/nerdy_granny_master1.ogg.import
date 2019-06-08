@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/nerdy_granny_master1.ogg-e4f227c8e787a310f5194dd8093a4d7b.oggstr"
+
+[deps]
+
+source_file="res://sounds/nerdy_granny_master1.ogg"
+dest_files=[ "res://.import/nerdy_granny_master1.ogg-e4f227c8e787a310f5194dd8093a4d7b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

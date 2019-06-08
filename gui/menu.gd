@@ -4,6 +4,7 @@ signal save_path_selected(fpath)
 signal load_path_selected(fpath)
 
 onready var _open_sound = get_node("OpenSound")
+onready var _volume_slider = get_node("Panel/VBoxContainer/HBoxContainer/MusicVolumeSlider")
 
 var _file_dialog = null
 
@@ -17,6 +18,9 @@ func _ready():
 	fd.connect("file_selected", self, "_on_FileDialog_file_selected")
 	add_child(fd)
 	_file_dialog = fd
+	
+	var music_bus = AudioServer.get_bus_index("Music")
+	_volume_slider.value = db2linear(AudioServer.get_bus_volume_db(music_bus))
 
 
 func close():
@@ -56,3 +60,9 @@ func _notification(what):
 			if visible:
 				_open_sound.play()
 				#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_MusicVolumeSlider_value_changed(value):
+	var music_bus = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(music_bus, linear2db(value))
+
