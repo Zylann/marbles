@@ -17,8 +17,13 @@ func set_target(t):
 	set_physics_process(_target != null)
 
 
+func has_target():
+	return _target != null and is_instance_valid(_target)
+
+
 func _physics_process(delta):
-	if _target == null or (not is_instance_valid(_target)):
+	if not has_target():
+		_target = null
 		print("No target")
 		set_physics_process(false)
 		return

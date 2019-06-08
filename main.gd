@@ -112,7 +112,7 @@ static func remove_from_tree(node):
 
 func _process(delta):
 	var marbles = get_tree().get_nodes_in_group("marbles")
-	if len(marbles) == 0:
+	if not _marble_avatar.has_target():
 		if _mode == MODE_MARBLE:
 			set_mode(MODE_EDIT)
 
