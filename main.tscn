@@ -50,6 +50,7 @@ texture = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2655, 0 )
 
 [node name="Env" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Ground" type="StaticBody" parent="Env"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
@@ -89,7 +90,6 @@ transform = Transform( -0.18096, 0, 0.98349, 0, 1, 0, -0.98349, 0, -0.18096, 47.
 transform = Transform( -0.07583, 0, 0.997121, 0, 1, 0, -0.997121, 0, -0.07583, -45.0797, 1.87385, 44.3638 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,7 +124,8 @@ margin_right = 957.0
 margin_bottom = 64.0
 text = "[M]: Spawn sheep
 [PageUp]: Nudge all pieces up
-[PageDown]: Nudge all pieces down"
+[PageDown]: Nudge all pieces down
+[Ctrl]: disable snapping"
 
 [node name="Menu" parent="." instance=ExtResource( 7 )]
 visible = false

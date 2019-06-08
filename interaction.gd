@@ -91,7 +91,9 @@ func update_ghost_position(state, ray_origin, ray_direction):
 	var con_hit = state.intersect_ray(ray_origin, ray_origin + ray_direction * 50.0, [], \
 		1 << CollisionLayers.CONNECTION_AREAS, false, true)
 	
-	if not con_hit.empty():
+	var enable_snap = not Input.is_key_pressed(KEY_CONTROL)
+	
+	if enable_snap and not con_hit.empty():
 		var con_pos = con_hit.collider.global_transform.origin
 		var is_begin = con_hit.collider.name.find("Begin") != -1
 		var offset = Vector3()
