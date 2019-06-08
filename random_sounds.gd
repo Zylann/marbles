@@ -4,6 +4,8 @@ export(String, FILE) var prefix = ""
 export var variant_count = 1
 export var min_interval = 3.0
 export var max_interval = 8.0
+export var min_pitch = 0.7
+export var max_pitch = 1.3
 
 onready var _player = get_node("AudioStreamPlayer3D")
 
@@ -12,6 +14,8 @@ var _remain = 0.0
 
 
 func _ready():
+	_player.pitch_scale = rand_range(min_pitch, max_pitch)
+	
 	for i in variant_count:
 		var path = prefix
 		if i != 0:
