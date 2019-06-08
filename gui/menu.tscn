@@ -20,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = -152.0
+margin_top = -178.0
 margin_right = 200.0
-margin_bottom = 152.0
+margin_bottom = 178.0
 color = Color( 0.109804, 0.109804, 0.109804, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -112,8 +112,11 @@ rect_min_size = Vector2( 0, 8 )
 self_modulate = Color( 0.47451, 0.47451, 0.47451, 1 )
 margin_top = 262.0
 margin_right = 368.0
-margin_bottom = 276.0
-text = "Made by Marc Gilleron for Isolation Game Jam 2019"
+margin_bottom = 327.0
+text = "Made by Marc Gilleron for Isolation Game Jam 2019
+Powered by Godot Engine 3.1
+Textures from cc0textures.com
+Contains true icelandic sheep sounds"
 align = 1
 
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
