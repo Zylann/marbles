@@ -8,6 +8,7 @@ const MODE_EDIT = 0
 const MODE_MARBLE = 1
 
 onready var _player_spawn = get_node("PlayerSpawn")
+onready var _pause_menu = get_node("Menu")
 
 var _edit_avatar = null
 var _marble_avatar = null
@@ -45,10 +46,12 @@ func _unhandled_input(event):
 				KEY_ESCAPE:
 					if _mode == MODE_MARBLE:
 						set_mode(MODE_EDIT)
-				KEY_K:
-					save_machine()
-				KEY_L:
-					load_machine()
+					else:
+						_pause_menu.show()
+#				KEY_K:
+#					save_machine()
+#				KEY_L:
+#					load_machine()
 
 
 func try_place_start_marble():
@@ -106,7 +109,7 @@ func _process(delta):
 			set_mode(MODE_EDIT)
 
 
-func save_machine():
+func save_machine(fpath):
 	var pieces = get_tree().get_nodes_in_group("pieces")
 	var pieces_data = []
 	for piece in pieces:
@@ -123,7 +126,6 @@ func save_machine():
 	}
 	var json = JSON.print(data, "\t", true)
 	var f = File.new()
-	var fpath = "save.marble"
 	var err = f.open(fpath, File.WRITE)
 	if err != OK:
 		print("Could not save file ", fpath, ", error ", err)
@@ -136,9 +138,8 @@ static func array_to_vec3(a):
 	return Vector3(a[0], a[1], a[2])
 
 
-func load_machine():
+func load_machine(fpath):
 	var f = File.new()
-	var fpath = "save.marble"
 	var err = f.open(fpath, File.READ)
 	if err != OK:
 		print("Could not open file ", fpath, ", error ", err)
@@ -163,3 +164,11 @@ func load_machine():
 		piece.rotation = rot
 		add_child(piece)
 		piece.set_ghost(false)
+
+
+func _on_Menu_load_path_selected(fpath):
+	load_machine(fpath)
+
+
+func _on_Menu_save_path_selected(fpath):
+	save_machine(fpath)
