@@ -95,7 +95,9 @@ margin_left = 435.0
 margin_top = 4.0
 margin_right = 957.0
 margin_bottom = 64.0
-text = "[M]: Spawn sheep"
+text = "[M]: Spawn sheep
+[PageUp]: Nudge all pieces up
+[PageDown]: Nudge all pieces down"
 
 [node name="Menu" parent="." instance=ExtResource( 6 )]
 visible = false
